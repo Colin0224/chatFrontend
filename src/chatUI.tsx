@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {io, Socket} from 'socket.io-client';
-import {useParams, useLocation, useNavigate} from 'react-router-dom';
+import {useParams, useLocation} from 'react-router-dom';
 // const SOCKET_URL = 'http://192.168.1.154:3000';
 // const SOCKET_URL = 'http://localhost:3000';
 const SOCKET_URL = 'https://chat-backend-production-dfd09.up.railway.app';
@@ -21,7 +21,7 @@ function ChatUI() {
 
   const {roomId} = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
+
 
   const initialState = location.state || {};
   //my logic is that every room has a code, 
@@ -40,10 +40,10 @@ const [messages, setMessage] = useState<Message[]>([
 
 
   const [chatID] = useState<string>(roomId || '')
-  const [UserID, setUserID] = useState<string>(initialState.userId || '')
+  const [UserID] = useState<string>(initialState.userId || '')
   const [msg, setMsg] = useState("hello")
   const [socket, setSocket] = useState<Socket | null >(null)
-  const [userName, setUserName] = useState<string>(initialState.username || '');
+  const [userName] = useState<string>(initialState.username || '');
 
   
 
