@@ -3,7 +3,7 @@ import {io, Socket} from 'socket.io-client';
 import {useParams, useLocation, useNavigate} from 'react-router-dom';
 // const SOCKET_URL = 'http://192.168.1.154:3000';
 // const SOCKET_URL = 'http://localhost:3000';
-const SOCKET_URL = 'http://172.26.57.215:3000';
+const SOCKET_URL = 'https://chat-backend-production-dfd09.up.railway.app';
 
 const makeMessageId = () => `msg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 
