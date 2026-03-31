@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Chat Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Real-time chat UI built with React, Tailwind CSS, and Socket.IO.
 
-Currently, two official plugins are available:
+Paired with [Chat-Backend](https://github.com/Colin0224/Chat-Backend).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open `http://localhost:5173` in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Make sure the [Chat Backend](https://github.com/Colin0224/Chat-Backend) is running.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
+
+| Layer       | Tool              |
+| ----------- | ----------------- |
+| Framework   | React 19 + TypeScript |
+| Routing     | React Router 7    |
+| Build       | Vite 7            |
+| Styling     | Tailwind CSS 4    |
+| WebSocket   | Socket.IO Client 4 |
+| Animation   | Framer Motion     |
+| Icons       | Lucide React      |
+
+## Features
+
+- **Join Room** — Enter a 6-character room code to join an existing chat
+- **Create Room** — Generate a random room code and share it with others
+- **Real-time messaging** — Messages are sent and received instantly via WebSockets
+- **Message history** — Previous messages in a room are loaded on join
+- **Auto-scroll** — Chat feed sticks to the bottom, pauses if you scroll up
+
+## Project Structure
+
+```
+src/
+├── App.tsx             # Route definitions (/ and /chat/:roomId)
+├── ChatCreation.tsx    # Landing page — join or create a room
+├── chatUI.tsx          # Chat room interface
+├── App.css             # Root layout + scroll container styles
+├── ChatCreation.css    # Title font styles
+├── index.css           # Tailwind import + base styles
+└── main.tsx            # Entry point with BrowserRouter
 ```
